@@ -30,14 +30,14 @@ public class Character : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         h = Input.GetAxisRaw("Horizontal");
 
-        //transform.Translate(new Vector3(0, 0, h).normalized * 8 * Time.deltaTime, Space.World);
+        
 
 
-        //
+        //Salto
         if (Input.GetKeyDown(KeyCode.Space))
         {
             
-
+            //Compruevo que esto suelo
             if (EstoySaltando())
             {
                 
@@ -46,35 +46,49 @@ public class Character : MonoBehaviour
             }
             
         }
+
         //Dash down
         if (Input.GetKeyDown(KeyCode.S) && !EstoySaltando())
         {
             rb.AddForce(new Vector3(0, -1, 0) * forcejump, ForceMode.Impulse);
         }
     
+
+        //salto y deslizamiento 
         if (PegadoPared()=="R"|| PegadoPared() == "L")
         {
-            escalaGravedad %= 2;
-
+            escalaGravedad /= 2;
+            //compruevo R o L
             if (PegadoPared() == "L")
             {
-                rb.AddForce(new Vector3(1, 1, 0) * forcejump, ForceMode.Impulse);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    rb.AddForce(new Vector3(0, 1, 0) * (forcejump*1.5f ), ForceMode.Impulse);
+                    rb.AddForce(new Vector3(0, 0, 1) * (15), ForceMode.Impulse);
+                }
+                    
             }
             if (PegadoPared() == "R")
             {
-                rb.AddForce(new Vector3(-1, 1, 0) * forcejump, ForceMode.Impulse);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    rb.AddForce(new Vector3(0, 1, 0) * (forcejump*1.5f), ForceMode.Impulse);
+                    rb.AddForce(new Vector3(0, 0, -1) * (15), ForceMode.Impulse);
+                }
+                    
             }
 
 
         }
         else
         {
-            escalaGravedad = -9.81f;
+            escalaGravedad = -9.81f * 1.5f;
 
 
         }
 
     }
+    // movimiento continuo
     void FixedUpdate()
     {
         //Leo la velocidad actual que lleva la bola
@@ -107,6 +121,7 @@ public class Character : MonoBehaviour
         return resultado;
 
     }
+
     bool EstoySaltando()
     {
         bool resultado = false;
@@ -118,5 +133,13 @@ public class Character : MonoBehaviour
     void AplicarGravedad()
     {
         rb.velocity += new Vector3(0, escalaGravedad, 0) * Time.deltaTime; //9.8 m /s
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("rotation"))
+        {
+
+        }
     }
 }

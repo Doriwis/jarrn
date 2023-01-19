@@ -13,6 +13,9 @@ public class points : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.r
+        transform.Rotate(new Vector3(0,1, 0) * 100 * Time.deltaTime,Space.World);
+
+        transform.Rotate(new Vector3(0, 1, 0) * 75 * Time.deltaTime, Space.World);
+
     }
 }
