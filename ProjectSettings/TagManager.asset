@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - rotation
+  - Enemy
+  - checkpoint
+  - Mony
+  - rotura
+  - giro
   layers:
   - Default
   - TransparentFX

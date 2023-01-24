@@ -10,18 +10,30 @@ public class Character : MonoBehaviour
     float h;
     float masa;
     float forcejump;
-
+    public int live;
+    Vector3 start;
     float velocidad = 5; //velocidad m/s
     float escalaGravedad = -9.81f;
-    // Start is called before the first frame update
+    Vector3 checkpoint;
+    public int contador;
+
+    
+    public int camara = 0;
+    
     void Start()
     {
-        forcejump = 15;
+        live = 3;
+        start = transform.position;
+        checkpoint = transform.position;
+       forcejump = 15;
         rb = GetComponent<Rigidbody>();
        
     }
 
-    // Update is called once per frame
+
+
+
+    
     void Update()
     {
         AplicarGravedad();
@@ -47,13 +59,7 @@ public class Character : MonoBehaviour
             
         }
 
-        //Dash down
-        if (Input.GetKeyDown(KeyCode.S) && !EstoySaltando())
-        {
-            rb.AddForce(new Vector3(0, -1, 0) * forcejump, ForceMode.Impulse);
-        }
-    
-
+        
         //salto y deslizamiento 
         if (PegadoPared()=="R"|| PegadoPared() == "L")
         {
@@ -64,7 +70,7 @@ public class Character : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     rb.AddForce(new Vector3(0, 1, 0) * (forcejump*1.5f ), ForceMode.Impulse);
-                    rb.AddForce(new Vector3(0, 0, 1) * (15), ForceMode.Impulse);
+                    rb.AddForce(new Vector3(0, 0, 1) * (3), ForceMode.Impulse);
                 }
                     
             }
@@ -73,7 +79,7 @@ public class Character : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     rb.AddForce(new Vector3(0, 1, 0) * (forcejump*1.5f), ForceMode.Impulse);
-                    rb.AddForce(new Vector3(0, 0, -1) * (15), ForceMode.Impulse);
+                    rb.AddForce(new Vector3(0, 0, -1) * (3), ForceMode.Impulse);
                 }
                     
             }
@@ -86,8 +92,30 @@ public class Character : MonoBehaviour
 
 
         }
+        
+        //Dash down
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !EstoySaltando())
+        {
+            rb.AddForce(new Vector3(0, -1, 0) * 70, ForceMode.Impulse);
+        }
+
+        //Dashses r l
+        float dash=120;
+        if (Input.GetMouseButtonDown(0))
+        {
+            rb.AddForce(new Vector3(0, 0, h) * dash, ForceMode.Impulse);
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            rb.AddForce(new Vector3(0, 0, -h) * dash, ForceMode.Impulse);
+        }
 
     }
+  
+    
+
+
+
     // movimiento continuo
     void FixedUpdate()
     {
@@ -105,6 +133,7 @@ public class Character : MonoBehaviour
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
 
     }
+
     string PegadoPared()
     {
         string resultado= "";
@@ -139,7 +168,36 @@ public class Character : MonoBehaviour
     {
         if (other.gameObject.CompareTag("rotation"))
         {
-
+            camara=1;
         }
+        else if (other.gameObject.CompareTag("giro"))
+        {
+            camara = -1;
+        }
+        else if (other.gameObject.CompareTag("checkpoint"))
+        {
+            checkpoint=transform.position;
+        }
+        else if (other.gameObject.CompareTag("rotura"))
+        {
+            other.GetComponent<Rigidbody>().isKinematic = false;
+        }
+
+    }
+    void Respawn()
+    {
+       
+        live--;
+        
+        if (live <= 0)
+        {
+            live = 3;
+            transform.position = start;
+        }
+        else
+        {
+            transform.position = checkpoint;
+        }
+
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class points : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         
@@ -17,5 +17,14 @@ public class points : MonoBehaviour
 
         transform.Rotate(new Vector3(0, 1, 0) * 75 * Time.deltaTime, Space.World);
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.GetComponent<Character>().contador++;
+            Destroy(this.gameObject);
+        }
     }
 }
