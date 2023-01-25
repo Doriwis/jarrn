@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour
-{
+{   
     Rigidbody rb;
     [SerializeField]LayerMask capa;
     [SerializeField] LayerMask cap2;
@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     float forcejump;
     public int live;
     Vector3 start;
-    float velocidad = 5; //velocidad m/s
+    float velocidad = 10; //velocidad m/s
     float escalaGravedad = -9.81f;
     Vector3 checkpoint;
     public int contador;
@@ -97,6 +97,9 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && !EstoySaltando())
         {
             rb.AddForce(new Vector3(0, -1, 0) * 70, ForceMode.Impulse);
+
+            StartCoroutine(CambioTag());
+            
         }
 
         //Dashses r l
@@ -104,10 +107,12 @@ public class Character : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             rb.AddForce(new Vector3(0, 0, h) * dash, ForceMode.Impulse);
+            StartCoroutine(CambioTag());
         }
         if (Input.GetMouseButtonDown(1))
         {
             rb.AddForce(new Vector3(0, 0, -h) * dash, ForceMode.Impulse);
+            StartCoroutine(CambioTag());
         }
 
     }
@@ -178,26 +183,14 @@ public class Character : MonoBehaviour
         {
             checkpoint=transform.position;
         }
-        else if (other.gameObject.CompareTag("rotura"))
-        {
-            other.GetComponent<Rigidbody>().isKinematic = false;
-        }
+       
 
     }
-    void Respawn()
+    
+    public IEnumerator CambioTag()
     {
-       
-        live--;
-        
-        if (live <= 0)
-        {
-            live = 3;
-            transform.position = start;
-        }
-        else
-        {
-            transform.position = checkpoint;
-        }
-
+        tag = "Destroy";
+        yield return new WaitForSeconds(1);
+        tag = "Player";
     }
 }
