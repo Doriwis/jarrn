@@ -14,8 +14,9 @@ public class camara1 : MonoBehaviour
 
     private void LateUpdate()
     {
-        //transform.position = character.transform.position - distancia;
+        transform.position = character.transform.position - distancia;
 
-        transform.RotateAround(character.transform.position, Vector3.up, 20 * Time.deltaTime);
+        
+
     }
 }

@@ -192,5 +192,6 @@ public class Character : MonoBehaviour
         tag = "Destroy";
         yield return new WaitForSeconds(1);
         tag = "Player";
+
     }
 }

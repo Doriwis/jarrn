@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]public float velocidad;
+    [SerializeField] public Vector3 start;
+    [SerializeField] public float ampitud = 1;
+    [SerializeField] public Vector3 direcion = new Vector3(0, 0, 1);
+    [SerializeField] public float desfase;
+    
 
-    movimientos move = new movimientos();
-    // Start is called before the first frame update
     void Start()
     {
-        move.ampitud = 5;
-        move.start = transform.position;
-        move.direcion = new Vector3(0, 0, 1);
-        move.velocidad = 5;
-        move.desfase = 0;
+        
+        start = transform.position;
+        
+        
     }
     // Update is called once per frame
     void Update()
     {
-        move.MovimientoNaranja();
+        float seno = ampitud * Mathf.Sin((velocidad * Time.time) + desfase);
+        transform.position = start + (direcion * seno);
     }
-    
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
