@@ -22,10 +22,12 @@ public class CameraTarget : MonoBehaviour
         if(rota==1)
         {
             StartCoroutine(CambiarRotacion());
+            
         }
         if (rota==-1)
         {
             StartCoroutine(StartRotacion());
+           
         }
     }
 

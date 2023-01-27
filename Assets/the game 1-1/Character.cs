@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
     Rigidbody rb;
     [SerializeField]LayerMask capa;
     [SerializeField] LayerMask cap2;
-    float h;
+    float h, v;
     float masa;
     float forcejump;
     public int live;
@@ -17,11 +17,13 @@ public class Character : MonoBehaviour
     Vector3 checkpoint;
     public int contador;
 
+    Vector3 mov;
     
-    public int camara = 0;
+    [SerializeField]public int camara = -1;
     
     void Start()
     {
+        camara = -1;
         live = 3;
         start = transform.position;
         checkpoint = transform.position;
@@ -39,8 +41,17 @@ public class Character : MonoBehaviour
         AplicarGravedad();
 
 
-        float v = Input.GetAxisRaw("Vertical");
+        v = Input.GetAxisRaw("Vertical");
         h = Input.GetAxisRaw("Horizontal");
+        if (camara==1)
+        {
+            mov=new Vector3(h, 0, v);
+            
+        }
+        if (camara==-1)
+        {
+            mov=new Vector3(0, 0, h);
+        }
 
         
 
@@ -124,18 +135,29 @@ public class Character : MonoBehaviour
     // movimiento continuo
     void FixedUpdate()
     {
-        //Leo la velocidad actual que lleva la bola
-        Vector3 currentVelocity = rb.velocity;
+        
+        
+            Debug.Log("3D");
+            //Leo la velocidad actual que lleva la bola
+            Vector3 currentVelocity = rb.velocity;
 
-        //Calculo la velocidad que quiero llevar.
-        Vector3 targetVelocity = new Vector3(0, 0, h) * velocidad;
+            //Calculo la velocidad que quiero llevar.
+            Vector3 targetVelocity = mov * velocidad;
 
-        //Calculo la diferencia entre la velocidad que quiero alcanzar y la que llevo actualmente.
-        Vector3 velocityChange = (targetVelocity - currentVelocity);
+            //Calculo la diferencia entre la velocidad que quiero alcanzar y la que llevo actualmente.
+            Vector3 velocityChange = (targetVelocity - currentVelocity);
 
-        velocityChange = new Vector3(velocityChange.x, 0, velocityChange.z);
+            velocityChange = new Vector3(velocityChange.x, 0, velocityChange.z);
 
-        rb.AddForce(velocityChange, ForceMode.VelocityChange);
+            rb.AddForce(velocityChange, ForceMode.VelocityChange);
+
+        
+        
+        
+            
+            
+        
+       
 
     }
 
