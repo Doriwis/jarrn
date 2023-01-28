@@ -21,9 +21,9 @@ public class points : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Destroy") )
         {
-            other.GetComponent<Character>().contador++;
+            other.GetComponent<Character1>().contador++;
             Destroy(this.gameObject);
         }
     }

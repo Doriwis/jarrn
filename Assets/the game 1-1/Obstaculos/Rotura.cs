@@ -5,10 +5,10 @@ using UnityEngine;
 public class Rotura : MonoBehaviour
 {
     [SerializeField] GameObject[] rocas;
-
+    
 
     Collider call;
-    
+   
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Destroy"))

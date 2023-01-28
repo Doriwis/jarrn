@@ -6,11 +6,11 @@ public class CameraTarget : MonoBehaviour
 {
     [SerializeField] GameObject player;
     int rota;
-    Character ch;
+    Character1 ch;
     // Start is called before the first frame update
     void Start()
     {
-        ch = player.GetComponent<Character>();
+        ch = player.GetComponent<Character1>();
       
     }
 
