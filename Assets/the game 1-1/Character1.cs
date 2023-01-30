@@ -24,7 +24,7 @@ public class Character1 : MonoBehaviour
     void Start()
     {
         camara = -1;
-        live = 3;
+        live = 5;
         start = transform.position;
         checkpoint = transform.position;
         forcejump = 15;

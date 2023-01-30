@@ -19,6 +19,7 @@ public class Movimiento_F : MonoBehaviour
     [SerializeField] float max;
 
     [SerializeField] public bool parent;
+    [SerializeField] GameObject personaje;
     
     
     void Start()
@@ -65,12 +66,13 @@ public class Movimiento_F : MonoBehaviour
 
 
     }
-
+    //MOU
     void MovOndulatorio()
     {
         float seno = ampitud * Mathf.Sin((velocidad * Time.time) + desfase);
         transform.position = start + (direcion * seno);
     }
+    //MRU
     void MovRectilineoZ()
     {
         transform.Translate(direcion* velocidadR * Time.time, Space.World);
@@ -92,6 +94,8 @@ public class Movimiento_F : MonoBehaviour
         transform.position = new Vector3(transform.position.x, clamp , transform.position.z);
     }
 
+
+
     private void OnCollisionEnter(Collision collision)
     {
         if (parent)
@@ -104,8 +108,22 @@ public class Movimiento_F : MonoBehaviour
         
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (parent)
+        {
+            if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Destroy"))
+            {
+                NoPapi(collision.gameObject);
+            }
+        }
+    }
     void Papi(GameObject obj)
     {
-        obj.transform.SetParent(this.gameObject.transform);
+        obj.transform.SetParent(this.gameObject.transform,true);
+    }
+    void NoPapi(GameObject obj)
+    {
+        obj.transform.SetParent(personaje.transform, true);
     }
 }

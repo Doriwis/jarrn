@@ -24,11 +24,13 @@ public class CameraTarget : MonoBehaviour
         {
             StartCoroutine(CambiarRotacion());
             
+            
 
         }
         if (rota==-1)
         {
             StartCoroutine(StartRotacion());
+            player.transform.position = new Vector3(0.58f, player.transform.position.y, player.transform.position.z);
            
            
         }
@@ -37,7 +39,7 @@ public class CameraTarget : MonoBehaviour
     public IEnumerator CambiarRotacion()
     {
         Quaternion rotacionInicial = transform.rotation;
-        Quaternion rotacionFinal = Quaternion.Euler(0, 90, 0);
+        Quaternion rotacionFinal = Quaternion.Euler(0, 45, 0);
         float timer = 0;
         float tiempoTotal = 0.75f;
         
