@@ -14,7 +14,7 @@ public class Character1 : MonoBehaviour
     Vector3 start;
     float velocidad = 10; //velocidad m/s
     float escalaGravedad = -9.81f;
-    Vector3 checkpoint;
+    public Vector3 checkpoint;
     public int contador;
 
     Vector3 mov;
@@ -212,8 +212,15 @@ public class Character1 : MonoBehaviour
     public IEnumerator CambioTag()
     {
         tag = "Destroy";
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         tag = "Player";
 
+    }
+    void Muero()
+    {
+        if (live<1)
+        {
+
+        }
     }
 }

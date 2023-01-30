@@ -18,11 +18,12 @@ public class Movimiento_F : MonoBehaviour
     [SerializeField] float min;
     [SerializeField] float max;
 
+    [SerializeField] public bool parent;
     
     
     void Start()
     {
-        
+        start = transform.position;
     }
 
     
@@ -91,4 +92,20 @@ public class Movimiento_F : MonoBehaviour
         transform.position = new Vector3(transform.position.x, clamp , transform.position.z);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (parent)
+        {
+            if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Destroy"))
+            {
+                Papi(collision.gameObject);
+            }
+        }
+        
+    }
+
+    void Papi(GameObject obj)
+    {
+        obj.transform.SetParent(this.gameObject.transform);
+    }
 }

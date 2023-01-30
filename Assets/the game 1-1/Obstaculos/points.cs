@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class points : MonoBehaviour
 {
-    
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField] int point = 1;
+   
     void Update()
     {
         transform.Rotate(new Vector3(0,1, 0) * 100 * Time.deltaTime,Space.World);
@@ -23,7 +18,7 @@ public class points : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Destroy") )
         {
-            other.GetComponent<Character1>().contador++;
+            other.GetComponent<Character1>().contador+=point;
             Destroy(this.gameObject);
         }
     }
