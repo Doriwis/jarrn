@@ -8,11 +8,12 @@ public class CameraTarget : MonoBehaviour
     
     int rota;
     Character1 ch;
+    Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         ch = player.GetComponent<Character1>();
-      
+        rb = player.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -23,23 +24,23 @@ public class CameraTarget : MonoBehaviour
         if(rota==1)
         {
             StartCoroutine(CambiarRotacion());
-            
+            rb.constraints = RigidbodyConstraints.None;
             
 
         }
         if (rota==-1)
         {
             StartCoroutine(StartRotacion());
-            player.transform.position = new Vector3(0.58f, player.transform.position.y, player.transform.position.z);
-           
-           
+            player.transform.position = new Vector3(0, player.transform.position.y, player.transform.position.z);
+            rb.constraints = RigidbodyConstraints.FreezePositionX;
+
         }
     }
 
     public IEnumerator CambiarRotacion()
     {
         Quaternion rotacionInicial = transform.rotation;
-        Quaternion rotacionFinal = Quaternion.Euler(0, 45, 0);
+        Quaternion rotacionFinal = Quaternion.Euler(0, 90, 0);
         float timer = 0;
         float tiempoTotal = 0.75f;
         

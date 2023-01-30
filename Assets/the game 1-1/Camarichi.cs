@@ -34,7 +34,7 @@ public class Camarichi : MonoBehaviour
     public IEnumerator CambiarRCamara()
     {
         Quaternion rotacionInicial = transform.rotation;
-        Quaternion rotacionFinal = Quaternion.Euler(30, -45, 0);
+        Quaternion rotacionFinal = Quaternion.Euler(30, 0, 0);
         //Vector3 pInicial = transform.position;
         //Vector3 pFinal = new Vector3(7.92f, 64.14f, 67.81001f);
 

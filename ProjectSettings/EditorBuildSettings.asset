@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/the game 1-1/Tuto.unity
+    guid: f5ee0399004d4d949bb042db2c849e53
   m_configObjects: {}

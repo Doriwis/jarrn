@@ -5,6 +5,8 @@ using UnityEngine;
 public class Trigger : MonoBehaviour
 { [SerializeField]GameObject[] obj;
     [SerializeField] string yo;
+    
+    
     // Start is called before the first frame update
 
 
@@ -13,10 +15,16 @@ public class Trigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Destroy"))
         {
-            for (int i = 0; i < obj.Length; i++)
+            if (yo=="movR"||yo=="movO")
             {
-                obj[i].GetComponent<Movimiento_F>().paso = yo;
+                for (int i = 0; i < obj.Length; i++)
+                {
+                    obj[i].GetComponent<Movimiento_F>().paso = yo;
+
+                }
             }
+            
+            
             
         }
     }

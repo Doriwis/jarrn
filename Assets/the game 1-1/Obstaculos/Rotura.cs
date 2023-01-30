@@ -15,7 +15,8 @@ public class Rotura : MonoBehaviour
         {
              call=GetComponent<Collider>();
             call.enabled = false;
-            Debug.Log("player detectado");
+            
+
             for (int i = 0; i < rocas.Length; i++)
             {
                 rocas[i].GetComponent<Me_Rompo>().ActivarTerremoto();
