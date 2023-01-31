@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Character1 : MonoBehaviour
 {
+    [SerializeField] GameObject camara1;
+    [SerializeField] string d = "2D";
+
     Rigidbody rb;
     [SerializeField] LayerMask capa;
     [SerializeField] LayerMask cap2;
@@ -126,6 +130,10 @@ public class Character1 : MonoBehaviour
             StartCoroutine(CambioTag());
         }
 
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
 
@@ -193,13 +201,24 @@ public class Character1 : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+       
         if (other.gameObject.CompareTag("rotation"))
         {
             camara = 1;
+            if (d!="3D")
+            {
+                camara1.transform.position += new Vector3(-3, 3, 0);
+                d = "3D";
+             }
         }
         else if (other.gameObject.CompareTag("giro"))
         {
             camara = -1;
+            if (d != "2D")
+            {
+                camara1.transform.position -= new Vector3(-3, 3, 0);
+                d = "2D";
+            }
         }
         else if (other.gameObject.CompareTag("checkpoint"))
         {

@@ -7,10 +7,13 @@ public class Camarichi : MonoBehaviour
     [SerializeField] GameObject player;
     int rota;
     Character1 ch;
+    Vector3 pInicial;
+    
     // Start is called before the first frame update
     void Start()
     {
         ch = player.GetComponent<Character1>();
+
     }
 
     // Update is called once per frame
@@ -21,29 +24,30 @@ public class Camarichi : MonoBehaviour
         if (rota == 1)
         {
             StartCoroutine(CambiarRCamara());
+          
             
-
         }
         if (rota == -1)
         {
 
             StartCoroutine(StartRCamara());
-
+            
+            
         }
     }
     public IEnumerator CambiarRCamara()
     {
         Quaternion rotacionInicial = transform.rotation;
         Quaternion rotacionFinal = Quaternion.Euler(30, 0, 0);
-        //Vector3 pInicial = transform.position;
-        //Vector3 pFinal = new Vector3(7.92f, 64.14f, 67.81001f);
+        Vector3 pInicial = transform.position;
+        Vector3 pFinal = new Vector3(-0.776304901f,63,56.2981567f);
 
         float timer = 0;
         float tiempoTotal = 0.75f;
         while (timer < tiempoTotal)
         {
             transform.rotation = Quaternion.Slerp(rotacionInicial, rotacionFinal, timer / tiempoTotal);
-            //transform.position = Vector3.Slerp(pFinal, pFinal, timer / tiempoTotal);
+            
             timer += 1 * Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }

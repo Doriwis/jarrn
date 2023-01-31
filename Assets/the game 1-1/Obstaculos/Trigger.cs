@@ -23,6 +23,14 @@ public class Trigger : MonoBehaviour
 
                 }
             }
+            if (yo=="shot")
+            {
+                for (int i = 0; i < obj.Length; i++)
+                {
+                    obj[i].GetComponent<Canon>().paso = yo;
+
+                }
+            }
             
             
             
