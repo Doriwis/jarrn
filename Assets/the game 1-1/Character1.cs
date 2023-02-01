@@ -121,18 +121,23 @@ public class Character1 : MonoBehaviour
         float dash = 120;
         if (Input.GetMouseButtonDown(0))
         {
-            rb.AddForce(new Vector3(0, 0, h) * dash, ForceMode.Impulse);
-            StartCoroutine(CambioTag());
+            if (camara==-1)
+            {
+                rb.AddForce(new Vector3(0, 0, h) * dash, ForceMode.Impulse);
+                StartCoroutine(CambioTag());
+            }
+            if (camara==1)
+            {
+                rb.AddForce(new Vector3(0, 0, v) * dash, ForceMode.Impulse);
+                StartCoroutine(CambioTag());
+            }
+            
         }
-        if (Input.GetMouseButtonDown(1))
-        {
-            rb.AddForce(new Vector3(0, 0, -h) * dash, ForceMode.Impulse);
-            StartCoroutine(CambioTag());
-        }
+        
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (live<1)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -235,11 +240,5 @@ public class Character1 : MonoBehaviour
         tag = "Player";
 
     }
-    void Muero()
-    {
-        if (live<1)
-        {
-
-        }
-    }
+    
 }
