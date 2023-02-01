@@ -5,21 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class botton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
-    // Update is called once per frame
-    void Update()
+    public void Game() 
     {
-        
+        SceneManager.LoadScene(1);
     }
-
-    public void NewScene() 
+    public void Menu()
     {
         SceneManager.LoadScene(0);
     }
-    
+    public void Dead()
+    {
+        SceneManager.LoadScene(2);
+    }
+    public void Win()
+    {
+        SceneManager.LoadScene(3);
+    }
+
 }

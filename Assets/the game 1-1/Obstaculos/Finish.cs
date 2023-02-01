@@ -10,7 +10,7 @@ public class Finish : MonoBehaviour
     {
         if (other.CompareTag("Destroy")|| other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
 }

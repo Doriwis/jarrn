@@ -6,30 +6,33 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedScenePath-0:
-      value: 22424703114646680e0b0227036c6c111b07142f1f2b233e2867083debf42d
-      flags: 0
-    RecentlyUsedScenePath-1:
-      value: 224247031146464f050b4c25112e5a50475a4965202d3035217b5326ece92021
-      flags: 0
-    RecentlyUsedScenePath-2:
-      value: 224247031146467508194c041f2f5b150458142f3a24777e38271427fb
-      flags: 0
-    RecentlyUsedScenePath-3:
       value: 224247031146467d1f0b091d222c5c1b05581c2f212768252320092a
       flags: 0
-    RecentlyUsedScenePath-4:
+    RecentlyUsedScenePath-1:
       value: 224247031146467d1f0b091d222c5c1b05580838292e27323e67083debf42d
       flags: 0
-    RecentlyUsedScenePath-5:
+    RecentlyUsedScenePath-2:
       value: 224247031146464f050b4c25112e5a50475a49652b66333e243d04
       flags: 0
-    RecentlyUsedScenePath-6:
-      value: 224247031146464f050b4c25112e5a50475a4965010d0805633c133af6f9
-      flags: 0
-    RecentlyUsedScenePath-7:
+    RecentlyUsedScenePath-3:
       value: 224247031146467508194c041f2f5b150458082f222c333c22663336f5a0073be7e933a7f234362820
       flags: 0
+    RecentlyUsedScenePath-4:
+      value: 224247031146464f050b4c25112e5a50475a4965082d2734633c133af6f9
+      flags: 0
+    RecentlyUsedScenePath-5:
+      value: 224247031146464f050b4c25112e5a50475a49651b21287e38271427fb
+      flags: 0
+    RecentlyUsedScenePath-6:
+      value: 2242470311464679010702295f024d0459231d32383d34353e663936efef7b0bf6fe3ae0fd3f3b1a0b27ca080126152ae00f1a2fd32625450400f41a08
+      flags: 0
+    RecentlyUsedScenePath-7:
+      value: 22424703114646770219003b202c530959310a2f2968152434251429e7e4740ce7ff22fcf53f2c730a01ea320171272df70f3638e21206020b0bf93125fa080704d71dd654dd1115df00
+      flags: 0
     RecentlyUsedScenePath-8:
+      value: 224247031146464f050b4c25112e5a50475a4965010d0805633c133af6f9
+      flags: 0
+    RecentlyUsedScenePath-9:
       value: 224247031146464f050b4c25112e5a50475a4965183d323f633c133af6f9
       flags: 0
     vcSharedLogLevel:

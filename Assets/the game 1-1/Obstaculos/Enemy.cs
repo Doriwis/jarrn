@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
         {
             collision.gameObject.GetComponent<Character1>().live--;
             collision.transform.position = collision.gameObject.GetComponent<Character1>().checkpoint;
+            
         }
         if (collision.gameObject.CompareTag("Destroy"))
         {

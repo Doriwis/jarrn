@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Character1 : MonoBehaviour
 {
     [SerializeField] GameObject camara1;
     [SerializeField] string d = "2D";
+
+    [SerializeField] TMP_Text puntos;
+     [SerializeField] public TMP_Text vidas;
 
     Rigidbody rb;
     [SerializeField] LayerMask capa;
@@ -42,6 +46,9 @@ public class Character1 : MonoBehaviour
 
     void Update()
     {
+        puntos.text = contador.ToString();
+        vidas.text = live.ToString();
+
         AplicarGravedad();
 
 
@@ -137,7 +144,7 @@ public class Character1 : MonoBehaviour
 
         if (live<1)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
     }
 
