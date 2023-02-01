@@ -501,3 +501,4 @@ Received Import Request.
 Start importing Assets/the game 1-1/Obstaculos/Finish.cs using Guid(0a1b786bc62ff3449b15c64a66ee80e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e0ad9615d4245c80a50e7669e61bd3d') in 0.012905 seconds
   Import took 0.021567 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
